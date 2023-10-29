@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {servicio}-deployment
+  name: d3m0n5oul-deployment
 spec:
   selector:
     matchLabels:
-      app: servicio-server
+      app: d3m0n5oul-server
   replicas: 1
   template:
     metadata:
       labels:
-        app: servicio-server
+        app: d3m0n5oul-server
     spec:
       containers:
-      - name: servicio-container
-        image: docker.io/{docker_user}/{servicio}:{github.sha}
+      - name: d3m0n5oul-container
+        image: docker.io/{docker_user}/d3m0n5oul:{github.sha}
         imagePullPolicy: Always
         ports:
         - containerPort: 80
@@ -23,12 +23,12 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    run: servicio-service
-  name: servicio-service
+    run: d3m0n5oul-service
+  name: d3m0n5oul-service
 spec:
   ports:
   - port: 80
     targetPort: 80
   selector:
-    app: servicio-server
+    app: d3m0n5oul-server
   type: LoadBalancer
